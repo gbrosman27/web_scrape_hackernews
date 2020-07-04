@@ -15,6 +15,11 @@ article_links = parsed_html.select('.storylink')
 art_subtext = parsed_html.select('.subtext')
 
 
+def sort_by_votes(hn_news_list):
+    """Sort the articles by votes from most to least."""
+    return sorted(hn_news_list, key=lambda k: k['votes'], reverse=True)
+
+
 def create_custom(links, subtext):
     """Creates a list of article names and their links."""
     news_list = []
@@ -28,9 +33,11 @@ def create_custom(links, subtext):
             # If votes are > 99, append to list.
             if votes > 99:
                 news_list.append({'title': title, 'link': href, 'votes': votes})
-    return news_list
+    # Sort the articles by votes.
+    return sort_by_votes(news_list)
 
 
+# Prints neater.
 pprint.pprint(create_custom(article_links, art_subtext))
 
 
