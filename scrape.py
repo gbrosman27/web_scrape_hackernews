@@ -39,6 +39,3 @@ def create_custom(links, subtext):
 
 # Prints neater.
 pprint.pprint(create_custom(article_links, art_subtext))
-
-
-
